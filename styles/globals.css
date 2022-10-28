@@ -19,12 +19,34 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+
+
+.mark{
+  @apply border-[5px] border-red-400
+}
+
+.sidebar-link{
+  @apply font-semibold hover:underline cursor-pointer w-full p-[10px] text-center
+}
+
+.input-holder{
+  @apply w-full  mb-[15px] 
+}
+.input{
+  @apply w-full rounded-[5px] p-[7px]
+}
+
+.loading-animation{
+  border-top : 3px solid white;
+  animation : loading 1s infinite linear ;
+}
+
+@keyframes loading {
+  0%{
+    transform: rotate(0deg);
   }
-  body {
-    color: white;
-    background: black;
+
+  100%{
+    transform: rotate(360deg);
   }
 }
