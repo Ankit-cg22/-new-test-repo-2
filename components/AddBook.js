@@ -13,10 +13,30 @@ export default function AddBook() {
         bookData = {...bookData , [e.target.name] : e.target.value}
     }
 
+    function onlyCharacters(word)
+    {
+        return !(/[^a-zA-Z]/.test(word))
+    }
+
     const handleSubmitClick = (e) => {
         e.preventDefault()
         bookData = {...bookData , 'Digital_format_available' : selectRef.current.value === 'false' ? false : true }
         setLoading(true)
+
+        if (!onlyCharacters(bookData.Author) )
+        {
+            alert("Author can not have digits")
+            setLoading(false)
+            return
+        }
+
+        if (!onlyCharacters(bookData.Country_of_origin) )
+        {
+            alert("Country can not have digits")
+            setLoading(false)
+            return
+        }
+
         API.post('/bookStore' , bookData )
         .then(function(response){
             setLoading(false)
