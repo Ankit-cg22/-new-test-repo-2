@@ -13,26 +13,25 @@ export default function AddBook() {
         bookData = {...bookData , [e.target.name] : e.target.value}
     }
 
-    function onlyCharacters(word)
-    {
-        return !(/[^a-zA-Z]/.test(word))
-    }
+    function validName(str) {
+        return /^[A-Za-z\s]*$/.test(str);
+      }
 
     const handleSubmitClick = (e) => {
         e.preventDefault()
         bookData = {...bookData , 'Digital_format_available' : selectRef.current.value === 'false' ? false : true }
         setLoading(true)
 
-        if (!onlyCharacters(bookData.Author) )
+        if (!validName(bookData.Author) )
         {
-            alert("Author can not have digits")
+            alert("Author input is not valid")
             setLoading(false)
             return
         }
 
-        if (!onlyCharacters(bookData.Country_of_origin) )
+        if (!validName(bookData.Country_of_origin) )
         {
-            alert("Country can not have digits")
+            alert("Country input is not valid")
             setLoading(false)
             return
         }
