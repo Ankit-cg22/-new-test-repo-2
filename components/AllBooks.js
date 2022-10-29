@@ -11,7 +11,7 @@ export default function AllBooks() {
             setLoading(false)
             console.log(res.data.data)
             setBooks(res.data.data)
-            console.log(books)
+           
         })
         .catch(function(error){
             setLoading(false)

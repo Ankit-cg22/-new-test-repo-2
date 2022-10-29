@@ -14,14 +14,14 @@ export default function AddBook() {
     }
 
     function validName(str) {
-        return /^[A-Za-z\s]*$/.test(str);
+        return /^[A-Za-z\s.]*$/.test(str);
       }
 
     const handleSubmitClick = (e) => {
         e.preventDefault()
         bookData = {...bookData , 'Digital_format_available' : selectRef.current.value === 'false' ? false : true }
         setLoading(true)
-
+        
         if (!validName(bookData.Author) )
         {
             alert("Author input is not valid")
@@ -45,7 +45,7 @@ export default function AddBook() {
         .catch(function(error){
             setLoading(false)
             Array.from(document.getElementsByTagName('input')).map(e => e.value = "")
-            alert("Error occured")
+            alert(error.response.data.message)
         })
         
 
